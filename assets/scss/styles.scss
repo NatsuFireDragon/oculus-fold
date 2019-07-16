@@ -19,7 +19,7 @@ a {
 }
 
 .container {
-  width: 90%;
+  width: 68%;
   margin: 0 auto;
 }
 
@@ -35,7 +35,7 @@ header {
   height: 100vh;
   width: 100%;
   .main-nav {
-    background: #000;
+    background: #202020;
     @include flex-navs;
     padding: 14px 40px;
     .logo-box {
@@ -46,11 +46,21 @@ header {
     .main-items {
       ul {
         padding-left: 20px;
+        cursor: pointer;
         li {
           display: inline-block;
           font-size: 15px;
           font-weight: 700;
-          padding: 0 22px;
+          a {
+            padding: 22px;
+            transition: all .2s ease-out;
+            &:hover {
+              color: #777;
+            }
+          }
+          a.main-selected {
+            color: #777;
+          }
         }
       }
     }
@@ -86,13 +96,16 @@ header {
     color: #000;
     position: relative;
     .name-box {
+      cursor: default;
       p {
         font-weight: 700;
-        font-size: 18px;
+        font-size: 17px;
+        letter-spacing: 1px;
       }
     }
     .sub-items {
       ul {
+        cursor: pointer;
         li {
           display: inline-block;
           font-size: 15px;
@@ -100,9 +113,12 @@ header {
           font-weight: 500;
           a {
             color: #000;
+            &:hover {
+              color: $blue;
+            }
             &.selected {
               border-bottom: 4px solid $blue;
-              padding-bottom: 16px;
+              padding-bottom: 15px;
               position: relative;
               color: #7a7a7a;
               &::after {
@@ -121,6 +137,7 @@ header {
     }
     .buy-now-box {
       padding-left: 120px;
+      cursor: pointer;
       .buy-now-btn {
         background: $blue;
         padding: 22px 60px;
@@ -129,15 +146,53 @@ header {
         right: 0;
         font-size: 14px;
         font-weight: 700;
+        transition: background .4s ease-out;
+        &:hover {
+          background: $light-blue;
+        }
       }
     }
   }
   .hero-box {
     height: 83%;
+    position: relative;
     .hero-img {
       background: url(/img/large-background.jpg) center center no-repeat;
       background-size: cover;
       height: 100%;
+    }
+    .info-box {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      height: 100%;
+      padding-bottom: 70px;
+      h1 {
+        font-family: 'Basis Grotesque Pro Bold';
+        color: #fff;
+        font-size: 60px;
+        padding-bottom: 55px;
+      }
+      .action-box {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .buy-now-btn {
+          background: $blue;
+          padding: 15px 45px;
+          border-radius: 4px;
+          font-weight: 700;
+        }
+        img {
+          width: 42px;
+          margin-left: 20px;
+        }
+        span {
+          color: #fff;
+          padding-left: 8px;
+          font-size: 15px;
+        }
+      }
     }
   }
 }
