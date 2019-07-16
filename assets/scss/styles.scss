@@ -19,8 +19,11 @@ a {
 }
 
 .container {
-  width: 68%;
+  width: 90%;
   margin: 0 auto;
+  @include tablet {
+    width: 68%;
+  }
 }
 
 
@@ -37,32 +40,39 @@ header {
   .main-nav {
     background: #202020;
     @include flex-navs;
-    padding: 14px 40px;
+    padding: 14px 20px;
+    @include tablet {
+      padding: 14px 40px;
+    }
     .logo-box {
       img {
         width: 42px;
       }
     }
     .main-items {
-      ul {
-        padding-left: 20px;
-        cursor: pointer;
-        li {
-          display: inline-block;
-          font-size: 15px;
-          font-weight: 700;
-          a {
-            padding: 22px;
-            transition: all .2s ease-out;
-            &:hover {
+      display: none;
+      @include tablet {
+        display: block;
+        ul {
+          padding-left: 20px;
+          cursor: pointer;
+          li {
+            display: inline-block;
+            font-size: 15px;
+            font-weight: 700;
+            a {
+              padding: 22px;
+              transition: all .2s ease-out;
+              &:hover {
+                color: #777;
+              }
+            }
+            a.main-selected {
               color: #777;
             }
           }
-          a.main-selected {
-            color: #777;
-          }
         }
-      }
+      } 
     }
     .user-box {
       color: #fff;
@@ -70,11 +80,14 @@ header {
       justify-content: center;
       align-items: center;
       .profile-box {
-        display: inline-flex;
+        display: none;
         align-items: center;
         justify-content: center;
         border-right: 1px solid rgba(255,255,255, .4);
         padding: 5px;
+        @include tablet {
+          display: inline-flex;;
+        }
         i {
           color: #a0a0a0;
           padding: 0 5px 7px;
@@ -83,18 +96,34 @@ header {
       }
       .cart-box {
         padding: 5px;
+        border-right: 1px solid rgba(112, 84, 84, 0.4);
         img {
           padding-left: 10px;
+        }
+      }
+      .menu-bar-box {
+        font-size: 24px;
+        display: block;
+        padding: 0 0 0 10px;
+        @include tablet {
+          display: none;
         }
       }
     }
   }
   .sub-nav {
-    @include flex-navs;
-    padding: 20px 40px;
-    background: #fff;
-    color: #000;
+    display: none;
     position: relative;
+    @include tablet {
+      @include flex-navs;
+      background: #fff;
+      color: #000;
+      padding: 20px 40px;
+      background: #fff;
+      color: #000;
+      position: relative;
+      height: auto;
+    }
     .name-box {
       cursor: default;
       p {
@@ -109,8 +138,11 @@ header {
         li {
           display: inline-block;
           font-size: 15px;
-          padding: 0 22px;
+          padding: 0 15px;
           font-weight: 500;
+          @include tablet {
+            padding: 0 22px;
+          }
           a {
             color: #000;
             &:hover {
@@ -157,42 +189,80 @@ header {
     height: 83%;
     position: relative;
     .hero-img {
-      background: url(/img/large-background.jpg) center center no-repeat;
-      background-size: cover;
-      height: 100%;
+      background: url(/img/small-background.jpg) $center-background;
+      @include background-setting;
+      @include tablet {
+        background: url(/img/med-background.jpg) $center-background;
+        @include background-setting;
+      }
+      @include desktop {
+        background: url(/img/large-background.jpg) $center-background;
+        @include background-setting;
+      }
     }
     .info-box {
       display: flex;
       justify-content: center;
-      align-items: flex-end;
+      align-items: center;
       height: 100%;
-      padding-bottom: 70px;
+      @include tablet {
+        align-items: flex-end;
+        padding-bottom: 70px;
+      }
       h1 {
         font-family: 'Basis Grotesque Pro Bold';
         color: #fff;
-        font-size: 60px;
-        padding-bottom: 55px;
+        font-size: 40px;
+        @include tablet {
+          font-size: 60px;
+          padding-bottom: 55px;
+        }
       }
       .action-box {
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        cursor: pointer;
         .buy-now-btn {
           background: $blue;
           padding: 15px 45px;
           border-radius: 4px;
           font-weight: 700;
+          transition: background .4s ease-out;
+          &:hover {
+            background: $light-blue;
+          }
         }
-        img {
-          width: 42px;
-          margin-left: 20px;
-        }
-        span {
+        .watch-video-box {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           color: #fff;
-          padding-left: 8px;
-          font-size: 15px;
+          transition: color .5s ease-in-out;
+          &:hover {
+            color: $blue;
+          }
+          .clear {
+            font-size: 48px;
+            margin-left: 20px;
+          }
+          span {
+            padding-left: 8px;
+            font-size: 15px;
+          }
         }
       }
+    }
+  }
+  .bottom-buy-box {
+    width: 100%;
+    background: $light-blue;
+    height: 10%;
+    .flex-container {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
   }
 }
