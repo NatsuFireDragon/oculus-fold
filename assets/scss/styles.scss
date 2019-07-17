@@ -24,6 +24,9 @@ a {
   @include tablet {
     width: 68%;
   }
+  @include desktop {
+    width: 90%;
+  }
 }
 
 
@@ -40,6 +43,7 @@ header {
   .main-nav {
     background: #202020;
     @include flex-navs;
+    justify-content: space-between;
     padding: 14px 20px;
     @include tablet {
       padding: 14px 40px;
@@ -51,7 +55,7 @@ header {
     }
     .main-items {
       display: none;
-      @include tablet {
+      @include large-desktop {
         display: block;
         ul {
           padding-left: 20px;
@@ -85,7 +89,7 @@ header {
         justify-content: center;
         border-right: 1px solid rgba(255,255,255, .4);
         padding: 5px;
-        @include tablet {
+        @include large-desktop {
           display: inline-flex;;
         }
         i {
@@ -98,14 +102,20 @@ header {
         padding: 5px;
         border-right: 1px solid rgba(112, 84, 84, 0.4);
         img {
-          padding-left: 10px;
+          padding-right: 10px;
+          @include desktop {
+            padding-left: 10px;
+          }
         }
       }
       .menu-bar-box {
         font-size: 24px;
         display: block;
-        padding: 0 0 0 10px;
-        @include tablet {
+        padding: 5px;
+        i {
+          padding-left: 8px;
+        }
+        @include large-desktop {
           display: none;
         }
       }
@@ -116,16 +126,24 @@ header {
     position: relative;
     @include tablet {
       @include flex-navs;
+      justify-content: center;
       background: #fff;
       color: #000;
-      padding: 20px 40px;
+      padding: 20px;
       background: #fff;
       color: #000;
       position: relative;
       height: auto;
     }
+    @include large-desktop {
+      justify-content: space-between;
+    }
     .name-box {
       cursor: default;
+      display: none;
+      @include large-desktop {
+        display: block;
+      }
       p {
         font-weight: 700;
         font-size: 17px;
@@ -170,6 +188,10 @@ header {
     .buy-now-box {
       padding-left: 120px;
       cursor: pointer;
+      display: none;
+      @include large-desktop {
+        display: block;
+      }
       .buy-now-btn {
         background: $blue;
         padding: 22px 60px;
@@ -188,6 +210,12 @@ header {
   .hero-box {
     height: 83%;
     position: relative;
+    @include tablet {
+      height: 74%;
+    }
+    @include desktop {
+      height: 83%;
+    }
     .hero-img {
       background: url(/img/small-background.jpg) $center-background;
       @include background-setting;
@@ -213,6 +241,7 @@ header {
         font-family: 'Basis Grotesque Pro Bold';
         color: #fff;
         font-size: 40px;
+        padding-bottom: 40px;
         @include tablet {
           font-size: 60px;
           padding-bottom: 55px;
@@ -224,13 +253,17 @@ header {
         align-items: center;
         cursor: pointer;
         .buy-now-btn {
-          background: $blue;
-          padding: 15px 45px;
-          border-radius: 4px;
-          font-weight: 700;
-          transition: background .4s ease-out;
-          &:hover {
-            background: $light-blue;
+          display: none;
+          @include desktop {
+            display: block;
+            background: $blue;
+            padding: 15px 45px;
+            border-radius: 4px;
+            font-weight: 700;
+            transition: background .4s ease-out;
+            &:hover {
+              background: $light-blue;
+            }
           }
         }
         .watch-video-box {
@@ -243,8 +276,11 @@ header {
             color: $blue;
           }
           .clear {
+            margin-left: 0;
             font-size: 48px;
-            margin-left: 20px;
+            @include desktop {
+              margin-left: 20px;
+            }
           }
           span {
             padding-left: 8px;
@@ -258,11 +294,41 @@ header {
     width: 100%;
     background: $light-blue;
     height: 10%;
+    display: block;
+    @include desktop {
+      display: none;
+    }
     .flex-container {
       height: 100%;
+      width: 95%;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include desktop {
+        display: none;
+      }
+      .title-item {
+        color: #fff;
+        h3 {
+          font-size: 15px;
+          font-weight: 700;
+          padding-bottom: 6px;
+        }
+      }
+      .black-buy-now {
+        background: #000;
+        width: 108px;
+        color: #fff;
+        padding: 10px 3px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        a {
+          font-weight: 700;
+        }
+      }
     }
   }
 }
